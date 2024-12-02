@@ -33,6 +33,19 @@ internal object Resources {
     }
 
 
+    fun readFileWithMultipleLinesSpaceSeparated(fileName: String): List<List<String>> {
+        val file = File(Resources.javaClass.classLoader.getResource(fileName)!!.toURI())
+        val lines = file.useLines { line -> line.toList() }
+        val valuesPerLine = mutableListOf<MutableList<String>>()
+        lines.forEach { line ->
+            val allValuesFromLine = mutableListOf<String>()
+            line.split(" ").map { it.trim() }.forEach { allValuesFromLine.add(it) }
+            valuesPerLine.add(allValuesFromLine)
+        }
+        return valuesPerLine
+    }
+
+
     fun readStringCommaSeparated(value: String): List<String> =
             value.split(",").map { it.trim() }
 }
