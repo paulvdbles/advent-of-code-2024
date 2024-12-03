@@ -6,6 +6,9 @@ internal object Resources {
     fun readFileAsLines(fileName: String): List<String> =
             File(Resources.javaClass.classLoader.getResource(fileName)!!.toURI()).useLines { it.toList() }
 
+    fun readFileAsString(fileName: String): String =
+        File(Resources.javaClass.classLoader.getResource(fileName)!!.toURI()).readText()
+
     fun readFileAsPairs(fileName: String): List<Pair<Int, Int>> =
         File(Resources.javaClass.classLoader.getResource(fileName)!!.toURI()).useLines { it.toList() }.map { parseTabSpacedPair(it) }
 

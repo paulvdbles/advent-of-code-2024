@@ -1,5 +1,5 @@
-import advent.Day1
-import advent.Resources
+package advent
+
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
